@@ -196,28 +196,6 @@ No surprises here:
 - **`Chat`** owns its history -- freed on `chat.deinit()`
 - Everything goes through an explicit `Allocator`. No globals, no hidden allocs.
 
-### Project Layout
-
-```
-src/
-  root.zig              Public API re-exports
-  Provider.zig          VTable interface
-  Chat.zig              Multi-turn conversation manager
-  types.zig             Message, Role, ContentBlock, TokenUsage, etc.
-  errors.zig            ProviderError error set
-  sse.zig               Server-Sent Events parser (buffer-based and streaming)
-  http.zig              HTTP client (buffered POST and streaming)
-  json_helpers.zig      JSON building and parsing utilities
-  providers/
-    anthropic.zig       Anthropic Claude implementation
-  testing/
-    mock_provider.zig   Mock provider for tests
-examples/
-  basic_chat.zig
-  streaming.zig
-  tool_use.zig
-```
-
 ## Testing
 
 ```sh
