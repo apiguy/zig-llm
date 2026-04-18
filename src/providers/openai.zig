@@ -373,7 +373,7 @@ fn writeMessage(jw: anytype, msg: types.Message, allocator: Allocator) !void {
                             try jw.field("name");
                             try jw.valueString(tu.name);
                             try jw.field("arguments");
-                            try jw.valueString(tu.input_json);
+                            try jw.valueString(if (tu.input_json.len == 0) "{}" else tu.input_json);
                             try jw.endObject();
                             try jw.endObject();
                         },

@@ -271,7 +271,7 @@ fn writeContentBlock(jw: anytype, block: types.ContentBlock) !void {
             try jw.field("name");
             try jw.valueString(tu.name);
             try jw.field("input");
-            try jw.valueRaw(tu.input_json);
+            try jw.valueRaw(if (tu.input_json.len == 0) "{}" else tu.input_json);
             try jw.endObject();
         },
         .tool_result => |tr| {
